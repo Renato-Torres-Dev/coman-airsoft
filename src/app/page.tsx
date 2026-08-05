@@ -1,65 +1,70 @@
-import Image from "next/image";
+"use client";
+
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div>
+      {/* Banner Slider */}
+      <section className="w-full h-[60vh] md:h-[80vh] relative bg-black">
+        <Swiper
+          spaceBetween={0}
+          centeredSlides={true}
+          autoplay={{
+            delay: 4000,
+            disableOnInteraction: false,
+          }}
+          pagination={{
+            clickable: true,
+          }}
+          navigation={true}
+          modules={[Autoplay, Pagination, Navigation]}
+          className="w-full h-full"
+        >
+          {/* Slide 1 */}
+          <SwiperSlide>
+            <div className="w-full h-full bg-[url('https://images.unsplash.com/photo-1599839619722-39751411ea63?q=80&w=2000')] bg-cover bg-center flex items-center justify-center">
+              <div className="absolute inset-0 bg-black/60" />
+              <div className="relative z-10 text-center px-4">
+                <h1 className="text-4xl md:text-6xl font-bold uppercase tracking-wide text-white mb-4">
+                  Bem-vindo ao <span className="text-green-500">COMAN</span>
+                </h1>
+                <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
+                  O maior portal integrado para operadores e equipes de Airsoft da região do Nordeste.
+                </p>
+              </div>
+            </div>
+          </SwiperSlide>
+
+          {/* Slide 2 */}
+          <SwiperSlide>
+            <div className="w-full h-full bg-[url('https://images.unsplash.com/photo-1620002093397-6a4a1599ffc2?q=80&w=2000')] bg-cover bg-center flex items-center justify-center">
+              <div className="absolute inset-0 bg-black/60"></div>
+              <div className="relative z-10 text-center px-4">
+                <h1 className="text-4xl md:text-6xl font-bold uppercase tracking-widest text-white mb-4">
+                  Operações <span className="text-green-500">Épicas</span>
+                </h1>
+                <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
+                  Inscreva-se nos melhores eventos, acompanhe o briefing e participe do combate.
+                </p>
+              </div>
+            </div>
+          </SwiperSlide>
+        </Swiper>
+      </section>
+
+      {/* SEÇÃO RÁPIDA (Exemplo do que virá a seguir) */}
+      <section className="max-w-7xl mx-auto py-16 px-4 text-center">
+        <h2 className="text-3xl font-bold uppercase mb-8 border-b-2 border-green-700 pb-2 inline-block">
+          Últimas Novidades
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+          <div className="bg-slate-800 p-6 rounded-lg border border-slate-700">Mercado (Em Breve)</div>
+          <div className="bg-slate-800 p-6 rounded-lg border border-slate-700">Operações (Em Breve)</div>
+          <div className="bg-slate-800 p-6 rounded-lg border border-slate-700">Vídeos (Em Breve)</div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+      </section>
     </div>
-  );
+  )
 }
